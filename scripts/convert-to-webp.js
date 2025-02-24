@@ -3,7 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 const imageDir = 'images';
-const images = ['Hero_Desktop.jpg', 'Hero_Tablet.jpg', 'Hero_Mobile.jpg'];
+const images = [
+    'Hero_Desktop.jpg',
+    'Hero_Tablet.jpg',
+    'Hero_Mobile.jpg',
+    'vr1.jpg',
+    'vr2.jpg',
+    'vr3.jpg',
+];
 
 images.forEach((image) => {
     sharp(path.join(imageDir, image))

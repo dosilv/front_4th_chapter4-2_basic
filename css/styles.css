@@ -108,6 +108,7 @@ section.hero img {
 .image-container {
     width: 100%;
     margin: 0 auto;
+    aspect-ratio: 16/9;
 }
 
 .hero-content {
