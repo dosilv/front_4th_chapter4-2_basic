@@ -57,11 +57,21 @@
         </header>
         
         <section class="hero">
-
-            <img class="desktop" src="images/Hero_Desktop.jpg">
-            <img class="mobile" src="images/Hero_Mobile.jpg">
-            <img class="tablet" src="images/Hero_Tablet.jpg">
-
+            <!-- 🖼️ 레이아웃 시프트 방지용 이미지 공간 확보 -->
+            <div class="image-container">
+                <!-- 🖼️ picture 요소로 디바이스별 반응형 이미지 최적화 -->
+                <picture>
+                    <!-- 🖼️ 브라우저 지원 시 WebP 이미지 사용 및 호환성 보장 -->
+                    <source srcset="images/Hero_Desktop.webp" media="(min-width: 960px)" type="image/webp">
+                    <source srcset="images/Hero_Desktop.jpg" media="(min-width: 960px)">
+                    <source srcset="images/Hero_Tablet.webp" media="(max-width: 959px) and (min-width: 576px)" type="image/webp">
+                    <source srcset="images/Hero_Tablet.jpg" media="(max-width: 959px) and (min-width: 576px)">
+                    <source srcset="images/Hero_Mobile.webp" media="(max-width: 575px)" type="image/webp">
+                    <source srcset="images/Hero_Mobile.jpg" media="(max-width: 575px)">
+                    <!-- 🖼️ source가 없을 경우 fallbak img(필수) -->
+                    <img src="images/Hero_Desktop.jpg" alt="VR 헤드셋 히어로 이미지" loading="eager">
+                </picture>
+            </div>
            
             <div class="hero-content">
                 <div class="container">
@@ -86,7 +96,10 @@
 
                     <div class="product new">
                         <div class="product-picture">
-                            <img src="images/vr1.jpg" alt="product: Penom Case">
+                            <div class="image-container">
+                                <!-- 🖼️ loading="lazy" 설정으로 뷰포트 밖 이미지는 지연 로딩 (브라우저 네이티브 기능) -->
+                                <img src="images/vr1.jpg" alt="product: Penom Case" loading="lazy">
+                            </div>
                         </div>
                         <div class="product-info">
                             <h5 class="categories">Headsets, Apple</h5>
@@ -100,7 +113,9 @@
 
                     <div class="product new">
                         <div class="product-picture">
-                            <img src="images/vr2.jpg" alt="product: Noise Cancelling Headphone">
+                            <div class="image-container">
+                                <img src="images/vr2.jpg" alt="product: Noise Cancelling Headphone" loading="lazy">
+                            </div>
                         </div>
                         <div class="product-info">
                             <h5 class="categories">Headsets, PS</h5>
@@ -114,7 +129,9 @@
 
                     <div class="product">
                         <div class="product-picture">
-                            <img src="images/vr3.jpg" alt="product: Canon Digital SLR EOS Rebel T6">
+                            <div class="image-container">
+                                <img src="images/vr3.jpg" alt="product: Canon Digital SLR EOS Rebel T6" loading="lazy">
+                            </div>
                         </div>
                         <div class="product-info">
                             <h5 class="categories">Headsets, Oculus</h5>
