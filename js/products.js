@@ -1,17 +1,16 @@
 async function loadProducts() {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch('https://fakestoreapi.com/products');
     const products = await response.json();
-    displayProducts(products);  
+    displayProducts(products);
 }
 
 function displayProducts(products) {
-
-    // Find the container where products will be displayed
     const container = document.querySelector('#all-products .container');
 
-   
-    // Iterate over each product and create the HTML structure safely
-    products.forEach(product => {
+    // 🖌️ DocumentFragment를 이용한 리플로우 최소화
+    const fragment = document.createDocumentFragment();
+
+    products.forEach((product) => {
         // Create the main product div
         const productElement = document.createElement('div');
         productElement.classList.add('product');
@@ -22,7 +21,7 @@ function displayProducts(products) {
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = `product: ${product.title}`;
-        img.width=250;
+        img.width = 250;
         pictureDiv.appendChild(img);
 
         // Create the product info div
@@ -56,20 +55,12 @@ function displayProducts(products) {
         productElement.appendChild(pictureDiv);
         productElement.appendChild(infoDiv);
 
-        // Append the new product element to the container
-        container.appendChild(productElement);
+        // 🖌️ container 대신 fragment에 추가
+        fragment.appendChild(productElement);
     });
 
-    
-
+    // 🖌️한 번에 DOM 업데이트
+    container.appendChild(fragment);
 }
-
-
 
 loadProducts();
-
-// Simulate heavy operation. It could be a complex price calculation.
-for (let i = 0; i < 10000000; i++) {
-    const temp = Math.sqrt(i) * Math.sqrt(i);
-}
-
